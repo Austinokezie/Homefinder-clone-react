@@ -24,7 +24,7 @@ export default function Sign() {
           <img src="https://media.istockphoto.com/id/482308235/photo/hand-holds-a-key.jpg?s=612x612&w=0&k=20&c=kkKrKnB7ZxKkmvRQZ0-0WqIE-6-CUayU0pOqk9JMPgE=" alt="key" className="w-full rounded-xl"></img>
 
          </div>
-         <div className="w-full md:w-[67%] lg:w-[40%] sm:w-auto ">
+         <div className="w-full md:w-[67%] lg:w-[40%] lg:ml-7 sm:w-auto ">
           <form >
             <input className="w-full mb-6 px-4 py-2 text-xl text-gray-700 bg-slate-50 border-gray-300 rounded transition ease-in-out " type="email" id="email" value={email} onChange={onchange} placeholder="Email address"></input>
             <div className="relative mb-6">
