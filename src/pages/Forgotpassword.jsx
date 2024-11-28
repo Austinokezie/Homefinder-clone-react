@@ -1,7 +1,8 @@
 import React, { useState } from "react"
-
 import { NavLink } from "react-router-dom";
 import OAuth from "../components/OAuth";
+import { toast } from "react-toastify";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 export default function ForgotPassword() {
 
@@ -9,6 +10,22 @@ export default function ForgotPassword() {
   
   function onchange(e){
     setEmail(e.target.value);
+  }
+
+  // onsubmit func is going to bne async because the send password reset email method from firebase auth returns a promise
+  async function onsubmit(e){
+    e.preventDefault()
+    try {
+      const auth = getAuth();
+      await sendPasswordResetEmail(auth, email);
+
+      toast.success("Email was sent");
+
+
+    } catch (error) {
+      toast.error("Could not send reset password");
+    }
+
   }
   
     return(
@@ -20,8 +37,8 @@ export default function ForgotPassword() {
 
          </div>
          <div className="w-full md:w-[67%] lg:w-[40%] lg:ml-8 sm:w-auto ">
-          <form >
-            <input className="  sm:w-auto lg:w-full mb-6 px-4 py-2 text-xl text-gray-700 bg-slate-50 border-gray-300 rounded transition ease-in-out " type="email" id="email" value={email} onChange={onchange} placeholder="Email address"></input>
+          <form onSubmit={onsubmit}>
+            <input className="  sm:w-full w-full mb-6 px-4 py-2 text-xl text-gray-700 bg-slate-50 border-gray-300 rounded transition ease-in-out " type="email" id="email" value={email} onChange={onchange} placeholder="Email address"></input>
           
             <div className="flex justify-between whitespace-nowrap text-sm  sm:text-lg">
               <p className="mb-6">Don't have an account?

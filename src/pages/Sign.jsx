@@ -26,15 +26,15 @@ export default function Sign() {
   async function onsubmit(e) {
     e.preventDefault()
     try {
-      const auth = getAuth()
+      const auth = getAuth();
       // get the user credentials
-      const userCredential = await signInWithEmailAndPassword(auth, email, password)
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
       
       if(userCredential.user){
         Navigate("/")
       }
     } catch (error) {
-      toast.error("Wrong User Credentials")
+      toast.error("Wrong User Credentials");
     }
     
   }
