@@ -11,13 +11,13 @@ export function useAuthStatus() {
     useEffect(()=>{
        const auth = getAuth()
        onAuthStateChanged(auth, (user)=>{
-        // check if the person is authenticated
+        // check if the user is authenticated
         if(user){
             setloggedIn(true)
         }
         setCheckingStatus(false)
        })
-    }, [])
+    }, []);
 
 
   return {loggedIn, checkingStatus}
