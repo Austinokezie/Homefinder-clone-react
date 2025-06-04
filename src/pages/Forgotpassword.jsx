@@ -4,6 +4,7 @@ import OAuth from "../components/OAuth";
 import { toast } from "react-toastify";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
+
 export default function ForgotPassword() {
 
   const[email, setEmail,] = useState("");
